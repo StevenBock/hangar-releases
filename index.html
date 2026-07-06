@@ -196,6 +196,46 @@
   .marquee span::after { content: "✦"; color: var(--mint); margin-left: 40px; }
   @keyframes scroll { to { transform: translateX(-50%); } }
 
+  /* ---------- thesis: shared cockpit ---------- */
+  section.thesis { padding: 110px 0 10px; text-align: center; }
+  .thesis h2 { max-width: 22ch; margin: 24px auto 0; }
+  .thesis-sub { max-width: 640px; margin: 20px auto 0; color: var(--muted); }
+  .thesis-sub strong { color: var(--text); font-weight: 500; }
+  .duet {
+    margin-top: 46px; border: 1px solid var(--line-strong); border-radius: 14px;
+    overflow: hidden; background: rgba(14, 22, 19, 0.5); text-align: left;
+  }
+  .duet-head, .duet-row {
+    display: grid; grid-template-columns: 1fr 180px 1fr; align-items: stretch;
+  }
+  .duet-head div {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.26em;
+    color: var(--dim); text-transform: uppercase; padding: 13px 24px;
+    border-bottom: 1px solid var(--line-strong);
+    background: rgba(61, 220, 151, 0.04);
+  }
+  .duet-row { transition: background 0.15s; }
+  .duet-row:hover { background: rgba(61, 220, 151, 0.045); }
+  .duet-row + .duet-row { border-top: 1px dashed var(--line); }
+  .duet-row > div { padding: 15px 24px; display: flex; align-items: center; }
+  .duet-you { justify-content: flex-end; text-align: right; color: var(--text); font-size: 15px; }
+  .duet-head .h-you { text-align: right; }
+  .duet-head .h-inst, .duet-inst { justify-content: center; text-align: center; }
+  .duet-inst {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em;
+    color: var(--amber); text-transform: uppercase;
+    border-left: 1px solid var(--line); border-right: 1px solid var(--line);
+  }
+  .duet-agent { font-family: var(--mono); font-size: 12.5px; color: var(--mint); }
+  @media (max-width: 880px) {
+    .duet-head { display: none; }
+    .duet-row { grid-template-columns: 1fr; }
+    .duet-row > div { padding: 6px 20px; }
+    .duet-inst { order: -1; justify-content: flex-start; border: none; padding-top: 16px; }
+    .duet-you { justify-content: flex-start; text-align: left; }
+    .duet-agent { padding-bottom: 16px; }
+  }
+
   /* ---------- feature sections ---------- */
   section.feat { padding: 110px 0 30px; }
   .feat-head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 14px; }
@@ -442,8 +482,8 @@
   <h1 class="rv rv-1">Mission control for <em>agentic</em> development.</h1>
   <p class="sub rv rv-2">
     Your dev servers, terminals, and AI coding agents — <strong>Claude Code, Codex, OpenCode</strong> —
-    on one flight deck. And through Hangar's built-in <strong>MCP server</strong>, every instrument on that
-    deck is a tool your agents can operate.
+    on one flight deck. And every instrument on it works both ways: <strong>you fly it from the keyboard,
+    your agents fly it as built-in tools</strong>. Out of the box.
   </p>
   <div class="hero-cta rv rv-3">
     <a class="btn btn-solid" href="https://github.com/StevenBock/hangar-releases/releases/latest">DOWNLOAD FOR MACOS</a>
@@ -470,6 +510,25 @@
     <span>Agent fleet</span><span>Command palette</span><span>OTLP telemetry</span><span>Log grid + SQL</span><span>Smart diffs</span><span>Knowledge graph</span><span>Worktree lanes</span><span>MCP tools</span><span>Schedules</span><span>Blueprints</span><span>Custom themes</span><span>Cat mode</span>
   </div>
 </div>
+
+<section class="thesis wrap" id="cockpit">
+  <p class="kicker rv">Shared cockpit</p>
+  <h2 class="rv rv-1">Two hands on every <em>instrument.</em></h2>
+  <p class="thesis-sub rv rv-2">
+    Most setups hand an agent a bare shell and wish it luck. In Hangar, you and your agents work the
+    <strong>same instruments</strong> — you fly them from the keyboard, they fly them as tools.
+    <strong>Nothing to wire up:</strong> spawn an agent and it's already on the deck, tooled and briefed.
+  </p>
+  <div class="duet rv rv-3">
+    <div class="duet-head"><div class="h-you">You</div><div class="h-inst">Instrument</div><div>Your agent</div></div>
+    <div class="duet-row"><div class="duet-you">Skim the test watcher's scrollback</div><div class="duet-inst">Terminals</div><div class="duet-agent">reads any screen in the stack, sends input</div></div>
+    <div class="duet-row"><div class="duet-you">Restart the flaky dev server from the sidebar</div><div class="duet-inst">The stack</div><div class="duet-agent">restarts it, then checks it came back healthy</div></div>
+    <div class="duet-row"><div class="duet-you">Scrub the latency heatmap</div><div class="duet-inst">Telemetry</div><div class="duet-agent">runs SQL over your traces, ranks pathologies</div></div>
+    <div class="duet-row"><div class="duet-you">Filter the log grid, ride the timeline</div><div class="duet-inst">Logs</div><div class="duet-agent">queries parsed fields, surfaces patterns</div></div>
+    <div class="duet-row"><div class="duet-you">Review the diff on the git deck</div><div class="duet-inst">Git</div><div class="duet-agent">builds in an isolated lane, lands it when green</div></div>
+    <div class="duet-row"><div class="duet-you">Fly the project's knowledge graph</div><div class="duet-inst">Memory</div><div class="duet-agent">writes the logbook as it works</div></div>
+  </div>
+</section>
 
 <section class="feat wrap" id="stack">
   <div class="feat-head rv"><span class="feat-num">01</span><span class="feat-tag">The Hangar · No agents required</span></div>
@@ -524,8 +583,9 @@
     <div class="feat-copy rv rv-2">
       <p>
         Hangar ships a built-in <strong>MCP server</strong> that exposes the entire workspace as
-        deterministic tools — <strong>80+ of them</strong>. Everything you can see, an agent can operate:
-        no screen-scraping, no copy-paste relays, just typed tool calls with honest results.
+        deterministic tools — <strong>80+ of them, connected the moment an agent spawns</strong>.
+        No config files, no glue scripts: an agent boards already knowing how to read the stack,
+        query your telemetry, and coordinate the crew.
       </p>
       <ul class="feat-list">
         <li><strong>Read the room</strong> — list the stack, read any terminal's output, check the test watcher instead of re-running the suite</li>

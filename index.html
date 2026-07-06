@@ -406,6 +406,45 @@
     .runway .sep { transform: rotate(90deg); }
   }
 
+  /* ---------- livery (customization) ---------- */
+  .session-bar.mid { border-top: 1px solid var(--line); }
+  .gate-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 11px 22px; gap: 16px;
+  }
+  .gate-row + .gate-row { border-top: 1px dashed var(--line); }
+  .gate-row .gname {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.14em;
+    color: var(--muted); text-transform: uppercase;
+  }
+  .switch { position: relative; width: 34px; height: 18px; flex: none; }
+  .switch input { position: absolute; inset: 0; opacity: 0; cursor: pointer; margin: 0; }
+  .switch .track {
+    position: absolute; inset: 0; border-radius: 999px; pointer-events: none;
+    background: rgba(155, 220, 190, 0.1); border: 1px solid var(--line-strong);
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .switch .track::after {
+    content: ""; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px;
+    border-radius: 50%; background: var(--dim); transition: left 0.2s, background 0.2s;
+  }
+  .switch input:checked + .track { background: var(--mint-dim); border-color: var(--mint); }
+  .switch input:checked + .track::after { left: 18px; background: var(--mint); }
+  .swatches { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px 22px; }
+  .swatch {
+    display: flex; align-items: center; gap: 8px;
+    border: 1px solid var(--line); border-radius: 999px; padding: 5px 13px 5px 7px;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em;
+    color: var(--muted); text-transform: uppercase;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .swatch:hover { border-color: var(--mint); color: var(--text); }
+  .swatch i {
+    width: 15px; height: 15px; border-radius: 50%; flex: none;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .swatch.yours { border-style: dashed; color: var(--mint); }
+
   /* ---------- departures board ---------- */
   section.board { padding: 130px 0 40px; }
   .board-shell {
@@ -863,8 +902,47 @@
   </div>
 </section>
 
+<section class="feat wrap" id="livery">
+  <div class="feat-head rv"><span class="feat-num">11</span><span class="feat-tag">The Livery · Make it yours</span></div>
+  <h2 class="rv rv-1">Every gauge optional. Every color <em>yours.</em></h2>
+  <div class="feat-grid">
+    <div class="feat-copy rv rv-2">
+      <p>
+        Hangar is opinionated about being unopinionated. Every group of agent tools sits behind
+        <strong>its own switch</strong> — you decide exactly how much reach agents get, and a flipped
+        switch applies live, no restart. The look is yours too: <strong>21 built-in themes</strong>,
+        fork any of them, or have an agent design you a new one on the spot.
+      </p>
+      <ul class="feat-list">
+        <li><strong>Tool gates</strong> — enable or disable each tool family at will; the consequential ones ship off until you say otherwise</li>
+        <li><strong>Fork any theme</strong> — every color token is editable, from the terminal palette to the chrome</li>
+        <li><strong>Agent-authored themes</strong> — describe a vibe and an agent designs it, previewing the real app in the candidate before you commit</li>
+        <li><strong>Canvas environments</strong> — agent-painted animated scenes behind your workspace. Gated, of course.</li>
+      </ul>
+    </div>
+    <div class="session rv rv-3">
+      <div class="session-bar"><span class="beacon"></span>SETTINGS · MCP TOOL GATES</div>
+      <div class="gate-row"><span class="gname">Logbook tools</span><label class="switch"><input type="checkbox" checked /><span class="track"></span></label></div>
+      <div class="gate-row"><span class="gname">Skill tools</span><label class="switch"><input type="checkbox" checked /><span class="track"></span></label></div>
+      <div class="gate-row"><span class="gname">Telemetry ingest</span><label class="switch"><input type="checkbox" checked /><span class="track"></span></label></div>
+      <div class="gate-row"><span class="gname">Blueprint tools</span><label class="switch"><input type="checkbox" /><span class="track"></span></label></div>
+      <div class="gate-row"><span class="gname">Canvas environments</span><label class="switch"><input type="checkbox" /><span class="track"></span></label></div>
+      <div class="session-bar mid">LIVERY · 21 BUILT-INS + YOURS</div>
+      <div class="swatches">
+        <span class="swatch"><i style="background: conic-gradient(#3ddc97 0 33%, #0e1613 33% 66%, #dcebe2 66%)"></i>Hangar Dark</span>
+        <span class="swatch"><i style="background: conic-gradient(#e779c1 0 33%, #58c7f3 33% 66%, #1a103d 66%)"></i>Synthwave</span>
+        <span class="swatch"><i style="background: conic-gradient(#88c0d0 0 33%, #2e3440 33% 66%, #a3be8c 66%)"></i>Nord</span>
+        <span class="swatch"><i style="background: conic-gradient(#ebbcba 0 33%, #191724 33% 66%, #c4a7e7 66%)"></i>Rosé Pine</span>
+        <span class="swatch"><i style="background: conic-gradient(#db924b 0 33%, #20161a 33% 66%, #efd7bb 66%)"></i>Coffee</span>
+        <span class="swatch"><i style="background: conic-gradient(#65c3c8 0 33%, #faf7f5 33% 66%, #ef9fbc 66%)"></i>Cupcake</span>
+        <span class="swatch yours"><i style="background: conic-gradient(from 90deg, #3ddc97, #f5b453, #e779c1, #3ddc97)"></i>Yours — ask an agent</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="board wrap">
-  <div class="feat-head rv"><span class="feat-num">11</span><span class="feat-tag">Also on the manifest</span></div>
+  <div class="feat-head rv"><span class="feat-num">12</span><span class="feat-tag">Also on the manifest</span></div>
   <h2 class="rv rv-1">Departures.</h2>
   <div class="board-shell rv rv-2">
     <div class="board-title">
@@ -880,7 +958,7 @@
         <tr><td class="gate">A02</td><td class="dest">File navigator</td><td class="via">docked read-only tree with ripgrep search — select lines, ask an agent</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">B04</td><td class="dest">Canvas environments</td><td class="via">agent-painted animated scenes behind your workspace</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">B07</td><td class="dest">Command schedules</td><td class="via">interval &amp; cron runs for any command in the stack</td><td><span class="status ontime">ON TIME</span></td></tr>
-        <tr><td class="gate">C02</td><td class="dest">Agent-built themes</td><td class="via">21 built-ins, plus ask an agent to design you a new one — live</td><td><span class="status ontime">ON TIME</span></td></tr>
+        <tr><td class="gate">C02</td><td class="dest">Terminal fonts</td><td class="via">a curated set of bundled coding fonts, one dropdown away</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">C05</td><td class="dest">Squawks</td><td class="via">quick per-project notes with attachments, one keystroke away</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">D01</td><td class="dest">Cat mode</td><td class="via">full-screen keyboard guard — the agent keeps working while the cat patrols</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">D09</td><td class="dest">iPhone remote</td><td class="via">watch and nudge your agents from the couch</td><td><span class="status boarding">BOARDING</span></td></tr>

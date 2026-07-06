@@ -172,6 +172,32 @@
     background-repeat: no-repeat;
     opacity: 0.7;
   }
+  .frame img { cursor: zoom-in; }
+
+  /* lightbox */
+  #lightbox {
+    border: none; padding: 0; background: transparent; overflow: visible;
+    max-width: none; max-height: none;
+  }
+  #lightbox[open] { animation: lbin 0.22s ease; }
+  @keyframes lbin { from { opacity: 0; transform: scale(0.965); } }
+  #lightbox::backdrop {
+    background: rgba(4, 8, 6, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  #lightbox img {
+    display: block; max-width: 96vw; max-height: 92vh;
+    border-radius: 10px; border: 1px solid var(--line-strong);
+    box-shadow: 0 40px 120px -20px rgba(0, 0, 0, 0.9);
+    cursor: zoom-out;
+  }
+  #lightbox .lb-hint {
+    position: absolute; left: 50%; transform: translateX(-50%); bottom: -32px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.24em;
+    color: var(--dim); text-transform: uppercase; white-space: nowrap;
+  }
+
   .frame figcaption {
     position: absolute; top: -30px; left: 0;
     font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
@@ -813,6 +839,11 @@
   <span class="hero-note rv rv-3">Apple Silicon · signed &amp; notarized · updates itself from this very repo</span>
 </section>
 
+<dialog id="lightbox" aria-label="Screenshot, enlarged">
+  <img alt="" />
+  <p class="lb-hint">Click anywhere or press ESC to close</p>
+</dialog>
+
 <footer>
   <div class="wrap foot-inner">
     <p>HANGAR © 2026</p>
@@ -826,6 +857,16 @@
     for (const e of entries) if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
   }, { threshold: 0.12 });
   document.querySelectorAll(".rv").forEach((el) => io.observe(el));
+
+  const lb = document.getElementById("lightbox");
+  const lbImg = lb.querySelector("img");
+  document.querySelectorAll(".frame img").forEach((img) => {
+    img.addEventListener("click", () => {
+      lbImg.src = img.src; lbImg.alt = img.alt;
+      lb.showModal();
+    });
+  });
+  lb.addEventListener("click", () => lb.close());
 
   const clock = document.getElementById("clock");
   const tick = () => { clock.textContent = new Date().toUTCString().slice(17, 25) + " UTC"; };

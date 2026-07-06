@@ -276,6 +276,45 @@
   }
   .meta-note strong { color: var(--amber); font-weight: 400; }
 
+  /* ---------- runway (blueprints × lanes) ---------- */
+  .runway {
+    position: relative; margin-top: 60px; padding: 34px 30px;
+    border: 1px solid var(--line-strong); border-radius: 14px;
+    background: linear-gradient(180deg, #0c1411, #0a100d);
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    overflow: hidden;
+  }
+  .runway::before {
+    content: ""; position: absolute; left: 26px; right: 26px; top: 50%; height: 2px;
+    background: repeating-linear-gradient(90deg, var(--amber) 0 26px, transparent 26px 52px);
+    opacity: 0.35;
+  }
+  .runway::after {
+    content: ""; position: absolute; left: 0; right: 0; top: 8px; height: 1px;
+    box-shadow: 0 0 0 0.5px var(--line);
+  }
+  .wp {
+    position: relative; z-index: 1; text-align: center;
+    background: var(--card); border: 1px solid var(--line-strong); border-radius: 9px;
+    padding: 13px 18px; min-width: 120px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .wp:hover { border-color: var(--mint); transform: translateY(-3px); }
+  .wp .wp-k {
+    display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em;
+    color: var(--mint); text-transform: uppercase; margin-bottom: 3px;
+  }
+  .wp .wp-v { font-family: var(--mono); font-size: 11px; color: var(--dim); }
+  .wp.wp-land { border-color: var(--mint); background: rgba(61, 220, 151, 0.08); }
+  .wp.wp-land .wp-k { color: var(--text); }
+  .runway .sep { position: relative; z-index: 1; color: var(--amber); font-family: var(--mono); font-size: 13px; opacity: 0.8; }
+  @media (max-width: 880px) {
+    .runway { flex-direction: column; }
+    .runway::before { left: 50%; right: auto; top: 26px; bottom: 26px; width: 2px; height: auto;
+      background: repeating-linear-gradient(180deg, var(--amber) 0 18px, transparent 18px 36px); }
+    .runway .sep { transform: rotate(90deg); }
+  }
+
   /* ---------- departures board ---------- */
   section.board { padding: 130px 0 40px; }
   .board-shell {
@@ -380,6 +419,7 @@
       <a href="#tower">Tower</a>
       <a href="#flightdeck">Flight&nbsp;Deck</a>
       <a href="#blackbox">Black&nbsp;Box</a>
+      <a href="#runway">Runway</a>
       <a href="#logbook">Logbook</a>
     </div>
     <a class="btn" href="https://github.com/StevenBock/hangar-releases/releases/latest">DOWNLOAD</a>
@@ -597,7 +637,7 @@
       </p>
       <ul class="feat-list">
         <li><strong>Smart diffs</strong> — two-tone, inline-highlighted, aligned so your eyes don't hunt</li>
-        <li><strong>Worktree lanes</strong> — agents build in isolated checkouts, land when green</li>
+        <li><strong>History on deck</strong> — every commit a click away, rendered with the same instruments</li>
         <li><strong>Review, then ask</strong> — hand any diff to an agent without copy-pasting a thing</li>
       </ul>
     </div>
@@ -607,8 +647,44 @@
   </div>
 </section>
 
+<section class="feat wrap" id="runway">
+  <div class="feat-head rv"><span class="feat-num">08</span><span class="feat-tag">The Runway · Blueprints × Lanes</span></div>
+  <h2 class="rv rv-1">Plan it on a blueprint. Build it in a <em>lane.</em></h2>
+  <div class="feat-grid flip">
+    <figure class="frame rv rv-3">
+      <img src="assets/blueprints.png" alt="Hangar blueprint detail: a working plan with context, decisions, checked steps, and a Build this button" width="1728" height="976" loading="lazy" />
+    </figure>
+    <div class="feat-copy rv rv-2">
+      <p>
+        Big features don't belong in your working checkout. Draft the plan <em>with</em> an agent as a
+        <strong>blueprint</strong> — a living document with acceptance criteria and interactive prototype
+        pages — then hit <strong>Build this</strong>: the agent gets a <strong>lane</strong>, an isolated
+        git worktree on its own branch, and works the plan while your files stay yours.
+      </p>
+      <ul class="feat-list">
+        <li><strong>Blueprints are contracts</strong> — a human-readable doc, machine-checkable acceptance criteria, and prototypes you can click before a line of code exists</li>
+        <li><strong>Lanes are clean rooms</strong> — every build gets its own worktree and branch; run three agents on three features with zero collisions</li>
+        <li><strong>One-click handoff</strong> — Build spawns the agent, seeds it the plan, and criteria tick as they hold</li>
+        <li><strong>Land when green</strong> — sync with main, review the diff on the git deck, land the lane with one command</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="runway rv" aria-label="Blueprint to lane workflow: brief, draft, finalize, build in lane, land">
+    <div class="wp"><span class="wp-k">Brief</span><span class="wp-v">you + agent</span></div>
+    <span class="sep">▸</span>
+    <div class="wp"><span class="wp-k">Draft</span><span class="wp-v">doc + prototypes</span></div>
+    <span class="sep">▸</span>
+    <div class="wp"><span class="wp-k">Finalize</span><span class="wp-v">criteria locked</span></div>
+    <span class="sep">▸</span>
+    <div class="wp"><span class="wp-k">Build</span><span class="wp-v">isolated lane</span></div>
+    <span class="sep">▸</span>
+    <div class="wp wp-land"><span class="wp-k">Land</span><span class="wp-v">merged when green</span></div>
+  </div>
+</section>
+
 <section class="feat wrap" id="logbook">
-  <div class="feat-head rv"><span class="feat-num">08</span><span class="feat-tag">The Logbook</span></div>
+  <div class="feat-head rv"><span class="feat-num">09</span><span class="feat-tag">The Logbook</span></div>
   <h2 class="rv rv-1">Project memory your agents <em>maintain.</em></h2>
   <div class="feat-grid flip">
     <figure class="frame rv rv-3">
@@ -630,7 +706,7 @@
 </section>
 
 <section class="board wrap">
-  <div class="feat-head rv"><span class="feat-num">09</span><span class="feat-tag">Also on the manifest</span></div>
+  <div class="feat-head rv"><span class="feat-num">10</span><span class="feat-tag">Also on the manifest</span></div>
   <h2 class="rv rv-1">Departures.</h2>
   <div class="board-shell rv rv-2">
     <div class="board-title">
@@ -643,8 +719,8 @@
       </thead>
       <tbody>
         <tr><td class="gate">A01</td><td class="dest">Agent skills</td><td class="via">bundled skills that teach the crew every instrument on the deck</td><td><span class="status ontime">ON TIME</span></td></tr>
-        <tr><td class="gate">A02</td><td class="dest">Worktree lanes</td><td class="via">isolated git-worktree builds — spawn, sync, land</td><td><span class="status ontime">ON TIME</span></td></tr>
-        <tr><td class="gate">B04</td><td class="dest">Blueprints</td><td class="via">collaborative planning docs with interactive prototype pages</td><td><span class="status ontime">ON TIME</span></td></tr>
+        <tr><td class="gate">A02</td><td class="dest">File navigator</td><td class="via">docked read-only tree with ripgrep search — select lines, ask an agent</td><td><span class="status ontime">ON TIME</span></td></tr>
+        <tr><td class="gate">B04</td><td class="dest">Canvas environments</td><td class="via">agent-painted animated scenes behind your workspace</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">B07</td><td class="dest">Command schedules</td><td class="via">interval &amp; cron runs for any command in the stack</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">C02</td><td class="dest">Agent-built themes</td><td class="via">21 built-ins, plus ask an agent to design you a new one — live</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">C05</td><td class="dest">Squawks</td><td class="via">quick per-project notes with attachments, one keystroke away</td><td><span class="status ontime">ON TIME</span></td></tr>

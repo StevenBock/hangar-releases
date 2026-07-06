@@ -374,6 +374,7 @@
   <div class="wrap nav-inner">
     <a class="wordmark" href="#"><span class="beacon"></span>HANGAR</a>
     <div class="nav-links">
+      <a href="#stack">Stack</a>
       <a href="#fleet">Fleet</a>
       <a href="#tooldeck">Tool&nbsp;Deck</a>
       <a href="#tower">Tower</a>
@@ -419,8 +420,32 @@
   </div>
 </div>
 
+<section class="feat wrap" id="stack">
+  <div class="feat-head rv"><span class="feat-num">01</span><span class="feat-tag">The Hangar · No agents required</span></div>
+  <h2 class="rv rv-1">One roof over your <em>whole</em> stack.</h2>
+  <div class="feat-grid">
+    <div class="feat-copy rv rv-2">
+      <p>
+        Before a single agent boards, Hangar earns its keep. Declare your project's commands once in
+        <strong>hangar.yml</strong> and every dev server, watcher, and one-off tool gets a home —
+        started in dependency order when you open the project, restartable from the sidebar,
+        two keystrokes from anywhere. No more terminal-tab archaeology.
+      </p>
+      <ul class="feat-list">
+        <li><strong>Declare once, run forever</strong> — "how do I run this repo?" becomes <em>open the project</em>; on-demand tools start their own dependency chain when triggered</li>
+        <li><strong>Terminals that keep up</strong> — real PTYs parsed in Rust, rendered on a WebGL canvas; scrollback, search, and copy that don't flinch at heavy output</li>
+        <li><strong>Log files on the shelf</strong> — register a file once and it's tailed, filtered, and queryable right next to the process that writes it</li>
+        <li><strong>Squawks</strong> — quick per-project notes with attachments, so the "remember to fix this" sticky lands in the hangar, not on your monitor bezel</li>
+      </ul>
+    </div>
+    <figure class="frame rv rv-3">
+      <img src="assets/overview.png" alt="Hangar project overview: instrument readout of processes online, CPU and memory, with cards for every agent, terminal, and command in the stack" width="1728" height="976" loading="lazy" />
+    </figure>
+  </div>
+</section>
+
 <section class="feat wrap" id="fleet">
-  <div class="feat-head rv"><span class="feat-num">01</span><span class="feat-tag">The Fleet</span></div>
+  <div class="feat-head rv"><span class="feat-num">02</span><span class="feat-tag">The Fleet</span></div>
   <h2 class="rv rv-1">Run a <em>crew</em> of agents, not a pile of tabs.</h2>
   <div class="feat-grid">
     <div class="feat-copy rv rv-2">
@@ -442,7 +467,7 @@
 </section>
 
 <section class="feat wrap" id="tooldeck">
-  <div class="feat-head rv"><span class="feat-num">02</span><span class="feat-tag">The Tool Deck · MCP</span></div>
+  <div class="feat-head rv"><span class="feat-num">03</span><span class="feat-tag">The Tool Deck · MCP</span></div>
   <h2 class="rv rv-1">Your agents get <em>hands.</em></h2>
   <div class="feat-grid">
     <div class="feat-copy rv rv-2">
@@ -495,7 +520,7 @@
 </section>
 
 <section class="feat wrap" id="tower">
-  <div class="feat-head rv"><span class="feat-num">03</span><span class="feat-tag">The Tower</span></div>
+  <div class="feat-head rv"><span class="feat-num">04</span><span class="feat-tag">The Tower</span></div>
   <h2 class="rv rv-1">⌘K clears <em>everything</em> for takeoff.</h2>
   <div class="feat-grid flip">
     <figure class="frame rv rv-3">
@@ -510,14 +535,14 @@
       <ul class="feat-list">
         <li><strong>New Agent: Claude Code / Codex / OpenCode</strong> — a fresh crew member in one hit</li>
         <li><strong>Process controls</strong> — start, restart, and jump to anything in the stack</li>
-        <li><strong>On-demand commands</strong> — idle tools that spin up their dependency chain when called</li>
+        <li><strong>Keyboard everything</strong> — themes, sidebar, quick switch, even cat mode: if it's in Hangar, it's in the palette</li>
       </ul>
     </div>
   </div>
 </section>
 
 <section class="feat wrap" id="flightdeck">
-  <div class="feat-head rv"><span class="feat-num">04</span><span class="feat-tag">The Flight Deck</span></div>
+  <div class="feat-head rv"><span class="feat-num">05</span><span class="feat-tag">The Flight Deck</span></div>
   <h2 class="rv rv-1">Telemetry your <em>agents</em> can read too.</h2>
   <div class="feat-grid">
     <div class="feat-copy rv rv-2">
@@ -539,7 +564,7 @@
 </section>
 
 <section class="feat wrap" id="blackbox">
-  <div class="feat-head rv"><span class="feat-num">05</span><span class="feat-tag">The Black Box</span></div>
+  <div class="feat-head rv"><span class="feat-num">06</span><span class="feat-tag">The Black Box</span></div>
   <h2 class="rv rv-1">405,000 log lines. <em>One</em> grid.</h2>
   <div class="feat-grid flip">
     <figure class="frame rv rv-3">
@@ -561,7 +586,7 @@
 </section>
 
 <section class="feat wrap" id="git">
-  <div class="feat-head rv"><span class="feat-num">06</span><span class="feat-tag">Pre-Flight Checks</span></div>
+  <div class="feat-head rv"><span class="feat-num">07</span><span class="feat-tag">Pre-Flight Checks</span></div>
   <h2 class="rv rv-1">Diffs that read like <em>instruments.</em></h2>
   <div class="feat-grid">
     <div class="feat-copy rv rv-2">
@@ -583,7 +608,7 @@
 </section>
 
 <section class="feat wrap" id="logbook">
-  <div class="feat-head rv"><span class="feat-num">07</span><span class="feat-tag">The Logbook</span></div>
+  <div class="feat-head rv"><span class="feat-num">08</span><span class="feat-tag">The Logbook</span></div>
   <h2 class="rv rv-1">Project memory your agents <em>maintain.</em></h2>
   <div class="feat-grid flip">
     <figure class="frame rv rv-3">
@@ -605,7 +630,7 @@
 </section>
 
 <section class="board wrap">
-  <div class="feat-head rv"><span class="feat-num">08</span><span class="feat-tag">Also on the manifest</span></div>
+  <div class="feat-head rv"><span class="feat-num">09</span><span class="feat-tag">Also on the manifest</span></div>
   <h2 class="rv rv-1">Departures.</h2>
   <div class="board-shell rv rv-2">
     <div class="board-title">

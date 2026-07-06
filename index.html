@@ -346,6 +346,27 @@
   }
   .meta-note strong { color: var(--amber); font-weight: 400; }
 
+  /* ---------- briefing room (skills) ---------- */
+  .skill-place {
+    border-top: 1px solid var(--line); padding: 14px 20px;
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    background: rgba(61, 220, 151, 0.03);
+  }
+  .skill-place .lead {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+    color: var(--dim); text-transform: uppercase; margin-right: 4px;
+  }
+  .chip {
+    border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px;
+    transition: border-color 0.2s;
+  }
+  .chip:hover { border-color: var(--mint); }
+  .chip b {
+    display: block; font-family: var(--mono); font-weight: 400; font-size: 11px;
+    letter-spacing: 0.14em; color: var(--text); text-transform: uppercase;
+  }
+  .chip span { font-family: var(--mono); font-size: 10px; color: var(--dim); }
+
   /* ---------- runway (blueprints × lanes) ---------- */
   .runway {
     position: relative; margin-top: 60px; padding: 34px 30px;
@@ -493,6 +514,7 @@
       <a href="#stack">Stack</a>
       <a href="#fleet">Fleet</a>
       <a href="#tooldeck">Tool&nbsp;Deck</a>
+      <a href="#skills">Briefing</a>
       <a href="#tower">Tower</a>
       <a href="#flightdeck">Flight&nbsp;Deck</a>
       <a href="#blackbox">Black&nbsp;Box</a>
@@ -532,8 +554,8 @@
 
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Agent fleet</span><span>Command palette</span><span>OTLP telemetry</span><span>Log grid + SQL</span><span>Smart diffs</span><span>Knowledge graph</span><span>Worktree lanes</span><span>MCP tools</span><span>Schedules</span><span>Blueprints</span><span>Custom themes</span><span>Cat mode</span>
-    <span>Agent fleet</span><span>Command palette</span><span>OTLP telemetry</span><span>Log grid + SQL</span><span>Smart diffs</span><span>Knowledge graph</span><span>Worktree lanes</span><span>MCP tools</span><span>Schedules</span><span>Blueprints</span><span>Custom themes</span><span>Cat mode</span>
+    <span>Agent fleet</span><span>Command palette</span><span>OTLP telemetry</span><span>Log grid + SQL</span><span>Smart diffs</span><span>Knowledge graph</span><span>Worktree lanes</span><span>MCP tools</span><span>Shared skills</span><span>Schedules</span><span>Blueprints</span><span>Custom themes</span><span>Cat mode</span>
+    <span>Agent fleet</span><span>Command palette</span><span>OTLP telemetry</span><span>Log grid + SQL</span><span>Smart diffs</span><span>Knowledge graph</span><span>Worktree lanes</span><span>MCP tools</span><span>Shared skills</span><span>Schedules</span><span>Blueprints</span><span>Custom themes</span><span>Cat mode</span>
   </div>
 </div>
 
@@ -657,8 +679,46 @@
   </p>
 </section>
 
+<section class="feat wrap" id="skills">
+  <div class="feat-head rv"><span class="feat-num">04</span><span class="feat-tag">The Briefing Room · Skills</span></div>
+  <h2 class="rv rv-1">Write a skill once. <em>Every</em> agent learns it.</h2>
+  <div class="feat-grid">
+    <div class="feat-copy rv rv-2">
+      <p>
+        Skills are how you teach agents your project's way of working — the deploy checklist, the review
+        ritual, the rules nobody should have to repeat. In Hangar a skill is <strong>plain markdown,
+        written once</strong>, and placed into each agent's native skill folder at launch —
+        <strong>Claude Code, Codex, OpenCode, and Gemini</strong> all get the same training, each in the
+        format its CLI expects. No per-tool copies drifting out of sync.
+      </p>
+      <ul class="feat-list">
+        <li><strong>One registry, every agent type</strong> — edit a skill in Settings and the whole roster is retrained on their next launch</li>
+        <li><strong>Scoped to where it belongs</strong> — a skill can apply everywhere or be pinned to specific projects</li>
+        <li><strong>Pre-trained out of the box</strong> — bundled skills for the logbook, blueprints, and project onboarding are installed from day one</li>
+        <li><strong>Agents teach agents</strong> — an agent can capture a hard-won workflow as a skill, and every future session inherits it</li>
+      </ul>
+    </div>
+    <div class="session rv rv-3">
+      <div class="session-bar"><span class="beacon"></span>SKILL REGISTRY · WRITE ONCE</div>
+      <pre><span class="dimline"># review-ritual · SKILL.md</span>
+<span class="tool">description:</span> <span class="res">how we land agent work in this repo</span>
+
+<span class="res">1. Run the checks — types, lint, tests all green</span>
+<span class="res">2. Review the diff hunk by hunk in the git view</span>
+<span class="res">3. Note follow-ups in the logbook, then land</span></pre>
+      <div class="skill-place">
+        <span class="lead">Placed at launch →</span>
+        <div class="chip"><b>Claude Code</b><span>.claude/skills</span></div>
+        <div class="chip"><b>Codex</b><span>.agents/skills</span></div>
+        <div class="chip"><b>OpenCode</b><span>.agents/skills</span></div>
+        <div class="chip"><b>Gemini</b><span>.agents/skills</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="feat wrap" id="tower">
-  <div class="feat-head rv"><span class="feat-num">04</span><span class="feat-tag">The Tower</span></div>
+  <div class="feat-head rv"><span class="feat-num">05</span><span class="feat-tag">The Tower</span></div>
   <h2 class="rv rv-1">⌘K clears <em>everything</em> for takeoff.</h2>
   <div class="feat-grid flip">
     <figure class="frame rv rv-3">
@@ -680,7 +740,7 @@
 </section>
 
 <section class="feat wrap" id="flightdeck">
-  <div class="feat-head rv"><span class="feat-num">05</span><span class="feat-tag">The Flight Deck</span></div>
+  <div class="feat-head rv"><span class="feat-num">06</span><span class="feat-tag">The Flight Deck</span></div>
   <h2 class="rv rv-1">Telemetry your <em>agents</em> can read too.</h2>
   <div class="feat-grid">
     <div class="feat-copy rv rv-2">
@@ -702,7 +762,7 @@
 </section>
 
 <section class="feat wrap" id="blackbox">
-  <div class="feat-head rv"><span class="feat-num">06</span><span class="feat-tag">The Black Box</span></div>
+  <div class="feat-head rv"><span class="feat-num">07</span><span class="feat-tag">The Black Box</span></div>
   <h2 class="rv rv-1">405,000 log lines. <em>One</em> grid.</h2>
   <div class="feat-grid flip">
     <figure class="frame rv rv-3">
@@ -724,7 +784,7 @@
 </section>
 
 <section class="feat wrap" id="git">
-  <div class="feat-head rv"><span class="feat-num">07</span><span class="feat-tag">Pre-Flight Checks</span></div>
+  <div class="feat-head rv"><span class="feat-num">08</span><span class="feat-tag">Pre-Flight Checks</span></div>
   <h2 class="rv rv-1">Diffs that read like <em>instruments.</em></h2>
   <div class="feat-grid">
     <div class="feat-copy rv rv-2">
@@ -746,7 +806,7 @@
 </section>
 
 <section class="feat wrap" id="runway">
-  <div class="feat-head rv"><span class="feat-num">08</span><span class="feat-tag">The Runway · Blueprints × Lanes</span></div>
+  <div class="feat-head rv"><span class="feat-num">09</span><span class="feat-tag">The Runway · Blueprints × Lanes</span></div>
   <h2 class="rv rv-1">Plan it on a blueprint. Build it in a <em>lane.</em></h2>
   <div class="feat-grid flip">
     <figure class="frame rv rv-3">
@@ -782,7 +842,7 @@
 </section>
 
 <section class="feat wrap" id="logbook">
-  <div class="feat-head rv"><span class="feat-num">09</span><span class="feat-tag">The Logbook</span></div>
+  <div class="feat-head rv"><span class="feat-num">10</span><span class="feat-tag">The Logbook</span></div>
   <h2 class="rv rv-1">Project memory your agents <em>maintain.</em></h2>
   <div class="feat-grid flip">
     <figure class="frame rv rv-3">
@@ -804,7 +864,7 @@
 </section>
 
 <section class="board wrap">
-  <div class="feat-head rv"><span class="feat-num">10</span><span class="feat-tag">Also on the manifest</span></div>
+  <div class="feat-head rv"><span class="feat-num">11</span><span class="feat-tag">Also on the manifest</span></div>
   <h2 class="rv rv-1">Departures.</h2>
   <div class="board-shell rv rv-2">
     <div class="board-title">
@@ -816,7 +876,7 @@
         <tr><th>Gate</th><th>Feature</th><th>Details</th><th>Status</th></tr>
       </thead>
       <tbody>
-        <tr><td class="gate">A01</td><td class="dest">Agent skills</td><td class="via">bundled skills that teach agents every tool in the workspace</td><td><span class="status ontime">ON TIME</span></td></tr>
+        <tr><td class="gate">A01</td><td class="dest">Database inspector</td><td class="via">registered connections with guarded, read-only SQL for you and your agents</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">A02</td><td class="dest">File navigator</td><td class="via">docked read-only tree with ripgrep search — select lines, ask an agent</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">B04</td><td class="dest">Canvas environments</td><td class="via">agent-painted animated scenes behind your workspace</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">B07</td><td class="dest">Command schedules</td><td class="via">interval &amp; cron runs for any command in the stack</td><td><span class="status ontime">ON TIME</span></td></tr>

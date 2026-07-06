@@ -228,6 +228,54 @@
   }
   .feat-list li strong { color: var(--text); font-weight: 500; }
 
+  /* ---------- tool deck (MCP) ---------- */
+  .session {
+    border: 1px solid var(--line-strong); border-radius: 12px; overflow: hidden;
+    background: #0a110e;
+    box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8);
+  }
+  .session-bar {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 16px; border-bottom: 1px solid var(--line);
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    color: var(--dim); text-transform: uppercase;
+    background: rgba(61, 220, 151, 0.04);
+  }
+  .session-bar .beacon { animation-duration: 1.6s; }
+  .session pre {
+    padding: 20px 22px; overflow-x: auto;
+    font-family: var(--mono); font-size: 12.5px; line-height: 2.05;
+  }
+  .session .prompt { color: var(--amber); }
+  .session .tool { color: var(--mint); }
+  .session .res { color: var(--muted); }
+  .session .dimline { color: var(--dim); }
+  .session .ok { color: var(--mint); }
+  .tools-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 56px;
+  }
+  .tool-card {
+    border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px;
+    background: rgba(14, 22, 19, 0.55);
+    transition: border-color 0.2s, transform 0.2s, background 0.2s;
+  }
+  .tool-card:hover { border-color: var(--mint); transform: translateY(-3px); background: rgba(61, 220, 151, 0.05); }
+  .tool-card h4 {
+    font-family: var(--mono); font-weight: 400; font-size: 12px;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--text);
+    display: flex; align-items: center; gap: 8px; margin-bottom: 7px;
+  }
+  .tool-card h4::before { content: "◈"; color: var(--mint); font-size: 11px; }
+  .tool-card p { font-size: 13.5px; color: var(--muted); line-height: 1.55; }
+  .tool-card code { font-family: var(--mono); font-size: 11.5px; color: var(--mint); background: var(--mint-dim); padding: 1px 5px; border-radius: 3px; }
+  .meta-note {
+    margin-top: 34px; padding: 16px 20px;
+    border: 1px dashed var(--line-strong); border-radius: 10px;
+    font-family: var(--mono); font-size: 12px; color: var(--muted);
+    line-height: 1.8; text-align: center;
+  }
+  .meta-note strong { color: var(--amber); font-weight: 400; }
+
   /* ---------- departures board ---------- */
   section.board { padding: 130px 0 40px; }
   .board-shell {
@@ -306,6 +354,7 @@
     .readout div:nth-child(3) { border-left: none; border-top: 1px solid var(--line); }
     .readout div:nth-child(4) { border-top: 1px solid var(--line); }
     .departures .via, .departures th:nth-child(3) { display: none; }
+    .tools-grid { grid-template-columns: 1fr; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -326,6 +375,7 @@
     <a class="wordmark" href="#"><span class="beacon"></span>HANGAR</a>
     <div class="nav-links">
       <a href="#fleet">Fleet</a>
+      <a href="#tooldeck">Tool&nbsp;Deck</a>
       <a href="#tower">Tower</a>
       <a href="#flightdeck">Flight&nbsp;Deck</a>
       <a href="#blackbox">Black&nbsp;Box</a>
@@ -340,7 +390,8 @@
   <h1 class="rv rv-1">Mission control for <em>agentic</em> development.</h1>
   <p class="sub rv rv-2">
     Your dev servers, terminals, and AI coding agents — <strong>Claude Code, Codex, OpenCode</strong> —
-    on one flight deck, with the telemetry, logs, and git tooling to see exactly what they're doing.
+    on one flight deck. And through Hangar's built-in <strong>MCP server</strong>, every instrument on that
+    deck is a tool your agents can operate.
   </p>
   <div class="hero-cta rv rv-3">
     <a class="btn btn-solid" href="https://github.com/StevenBock/hangar-releases/releases/latest">DOWNLOAD FOR MACOS</a>
@@ -390,8 +441,61 @@
   </div>
 </section>
 
+<section class="feat wrap" id="tooldeck">
+  <div class="feat-head rv"><span class="feat-num">02</span><span class="feat-tag">The Tool Deck · MCP</span></div>
+  <h2 class="rv rv-1">Your agents get <em>hands.</em></h2>
+  <div class="feat-grid">
+    <div class="feat-copy rv rv-2">
+      <p>
+        Hangar ships a built-in <strong>MCP server</strong> that exposes the entire workspace as
+        deterministic tools — <strong>80+ of them</strong>. Everything you can see, an agent can operate:
+        no screen-scraping, no copy-paste relays, just typed tool calls with honest results.
+      </p>
+      <ul class="feat-list">
+        <li><strong>Read the room</strong> — list the stack, read any terminal's output, check the test watcher instead of re-running the suite</li>
+        <li><strong>Coordinate the crew</strong> — spawn sibling agents, message them mid-task, see who's idle, executing, or blocked</li>
+        <li><strong>Operate the instruments</strong> — SQL over telemetry and logs, worktree lanes, schedules, the logbook wiki</li>
+        <li><strong>Leave the place better</strong> — agents log what moved, update project memory, even author themes</li>
+      </ul>
+    </div>
+    <div class="session rv rv-3">
+      <div class="session-bar"><span class="beacon"></span>AGENT SESSION · CLAUDE CODE · LIVE</div>
+      <pre><span class="prompt">❯ "checkout feels slow lately — find out why"</span>
+
+<span class="tool">→ hangar_telemetry_pathologies</span>   <span class="res">3 found · QUERY RUN score 67</span>
+<span class="dimline">    Checkout.process · 7 queries/run · 40 traces</span>
+<span class="tool">→ hangar_get_trace</span> <span class="res">a91f20…       622ms · span tree loaded</span>
+<span class="dimline">    line_items looked up row-by-row inside the loop</span>
+<span class="tool">→ hangar_query_logs</span>              <span class="res">129 ERROR rows · 1h window</span>
+<span class="dimline">    "payment provider timeout" clusters at :53</span>
+<span class="tool">→ hangar_message_agent</span> <span class="res">codex     "own the backend fix?"</span>
+<span class="tool">→ hangar_create_lane</span> <span class="res">checkout-nplus1 · worktree ready</span>
+<span class="tool">→ hangar_logbook_log</span>             <span class="res">diagnosis recorded</span>
+
+<span class="ok">✓ N+1 diagnosed · fix building in an isolated lane</span></pre>
+    </div>
+  </div>
+
+  <div class="tools-grid">
+    <div class="tool-card rv"><h4>Processes</h4><p>List the stack, read any PTY's screen, send input, restart — <code>hangar_get_process_logs</code> beats re-running the build.</p></div>
+    <div class="tool-card rv rv-1"><h4>Agents</h4><p>Spawn, message, and monitor the crew — every agent knows who else is on deck and what they're doing.</p></div>
+    <div class="tool-card rv rv-2"><h4>Telemetry</h4><p>Overview, error groups, pathologies, span stats, full SQL — <code>hangar_query_telemetry</code> over your traces.</p></div>
+    <div class="tool-card rv"><h4>Logs</h4><p>Query parsed log fields with real SQL, save formats and views, surface recurring patterns.</p></div>
+    <div class="tool-card rv rv-1"><h4>Lanes</h4><p>Create an isolated git-worktree build, sync it, land it — agents ship without stepping on your checkout.</p></div>
+    <div class="tool-card rv rv-2"><h4>Logbook</h4><p>Durable project wiki agents read on arrival and update before they leave. Memory that outlives the session.</p></div>
+    <div class="tool-card rv"><h4>Blueprints</h4><p>Collaborative plans with machine-checkable acceptance criteria and interactive prototype pages.</p></div>
+    <div class="tool-card rv rv-1"><h4>Schedules</h4><p>Put any command on an interval or cron — agents can set up the automation they need.</p></div>
+    <div class="tool-card rv rv-2"><h4>Databases</h4><p>Registered connections with guarded, read-only SQL — agents inspect data without the ability to drop it.</p></div>
+  </div>
+
+  <p class="meta-note rv">
+    <strong>FIELD PROOF:</strong> every screenshot on this page was captured by an agent flying Hangar
+    through its own MCP tools — navigate, click, frame, shoot.
+  </p>
+</section>
+
 <section class="feat wrap" id="tower">
-  <div class="feat-head rv"><span class="feat-num">02</span><span class="feat-tag">The Tower</span></div>
+  <div class="feat-head rv"><span class="feat-num">03</span><span class="feat-tag">The Tower</span></div>
   <h2 class="rv rv-1">⌘K clears <em>everything</em> for takeoff.</h2>
   <div class="feat-grid flip">
     <figure class="frame rv rv-3">
@@ -413,7 +517,7 @@
 </section>
 
 <section class="feat wrap" id="flightdeck">
-  <div class="feat-head rv"><span class="feat-num">03</span><span class="feat-tag">The Flight Deck</span></div>
+  <div class="feat-head rv"><span class="feat-num">04</span><span class="feat-tag">The Flight Deck</span></div>
   <h2 class="rv rv-1">Telemetry your <em>agents</em> can read too.</h2>
   <div class="feat-grid">
     <div class="feat-copy rv rv-2">
@@ -435,7 +539,7 @@
 </section>
 
 <section class="feat wrap" id="blackbox">
-  <div class="feat-head rv"><span class="feat-num">04</span><span class="feat-tag">The Black Box</span></div>
+  <div class="feat-head rv"><span class="feat-num">05</span><span class="feat-tag">The Black Box</span></div>
   <h2 class="rv rv-1">405,000 log lines. <em>One</em> grid.</h2>
   <div class="feat-grid flip">
     <figure class="frame rv rv-3">
@@ -457,7 +561,7 @@
 </section>
 
 <section class="feat wrap" id="git">
-  <div class="feat-head rv"><span class="feat-num">05</span><span class="feat-tag">Pre-Flight Checks</span></div>
+  <div class="feat-head rv"><span class="feat-num">06</span><span class="feat-tag">Pre-Flight Checks</span></div>
   <h2 class="rv rv-1">Diffs that read like <em>instruments.</em></h2>
   <div class="feat-grid">
     <div class="feat-copy rv rv-2">
@@ -479,7 +583,7 @@
 </section>
 
 <section class="feat wrap" id="logbook">
-  <div class="feat-head rv"><span class="feat-num">06</span><span class="feat-tag">The Logbook</span></div>
+  <div class="feat-head rv"><span class="feat-num">07</span><span class="feat-tag">The Logbook</span></div>
   <h2 class="rv rv-1">Project memory your agents <em>maintain.</em></h2>
   <div class="feat-grid flip">
     <figure class="frame rv rv-3">
@@ -501,7 +605,7 @@
 </section>
 
 <section class="board wrap">
-  <div class="feat-head rv"><span class="feat-num">07</span><span class="feat-tag">Also on the manifest</span></div>
+  <div class="feat-head rv"><span class="feat-num">08</span><span class="feat-tag">Also on the manifest</span></div>
   <h2 class="rv rv-1">Departures.</h2>
   <div class="board-shell rv rv-2">
     <div class="board-title">
@@ -513,7 +617,7 @@
         <tr><th>Gate</th><th>Feature</th><th>Details</th><th>Status</th></tr>
       </thead>
       <tbody>
-        <tr><td class="gate">A01</td><td class="dest">MCP tool deck</td><td class="via">agents control processes, logs, telemetry &amp; git through 80+ first-party tools</td><td><span class="status ontime">ON TIME</span></td></tr>
+        <tr><td class="gate">A01</td><td class="dest">Agent skills</td><td class="via">bundled skills that teach the crew every instrument on the deck</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">A02</td><td class="dest">Worktree lanes</td><td class="via">isolated git-worktree builds — spawn, sync, land</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">B04</td><td class="dest">Blueprints</td><td class="via">collaborative planning docs with interactive prototype pages</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">B07</td><td class="dest">Command schedules</td><td class="via">interval &amp; cron runs for any command in the stack</td><td><span class="status ontime">ON TIME</span></td></tr>

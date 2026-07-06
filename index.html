@@ -482,8 +482,8 @@
   <h1 class="rv rv-1">Mission control for <em>agentic</em> development.</h1>
   <p class="sub rv rv-2">
     Your dev servers, terminals, and AI coding agents — <strong>Claude Code, Codex, OpenCode</strong> —
-    on one flight deck. And every instrument on it works both ways: <strong>you fly it from the keyboard,
-    your agents fly it as built-in tools</strong>. Out of the box.
+    in one workspace. And everything you can do in it, <strong>your agents can do too — as built-in
+    tools</strong>. Out of the box.
   </p>
   <div class="hero-cta rv rv-3">
     <a class="btn btn-solid" href="https://github.com/StevenBock/hangar-releases/releases/latest">DOWNLOAD FOR MACOS</a>
@@ -497,7 +497,7 @@
   </figure>
 
   <div class="readout rv rv-4">
-    <div><span class="k">Agents on deck</span><span class="v">unlimited</span></div>
+    <div><span class="k">Agents</span><span class="v">unlimited</span></div>
     <div><span class="k">Tools for agents</span><span class="v">80+</span></div>
     <div><span class="k">Themes</span><span class="v">21 + yours</span></div>
     <div><span class="k">Control</span><span class="v">⌘K</span></div>
@@ -516,8 +516,9 @@
   <h2 class="rv rv-1">Two hands on every <em>instrument.</em></h2>
   <p class="thesis-sub rv rv-2">
     Most setups hand an agent a bare shell and wish it luck. In Hangar, you and your agents work the
-    <strong>same instruments</strong> — you fly them from the keyboard, they fly them as tools.
-    <strong>Nothing to wire up:</strong> spawn an agent and it's already on the deck, tooled and briefed.
+    <strong>same surfaces</strong> — you drive them from the keyboard, they drive them as tools.
+    <strong>Nothing to wire up:</strong> spawn an agent and it's already connected, with skills that
+    teach it the whole workspace.
   </p>
   <div class="duet rv rv-3">
     <div class="duet-head"><div class="h-you">You</div><div class="h-inst">Instrument</div><div>Your agent</div></div>
@@ -526,7 +527,7 @@
     <div class="duet-row"><div class="duet-you">Scrub the latency heatmap</div><div class="duet-inst">Telemetry</div><div class="duet-agent">runs SQL over your traces, ranks pathologies</div></div>
     <div class="duet-row"><div class="duet-you">Filter the log grid, ride the timeline</div><div class="duet-inst">Logs</div><div class="duet-agent">queries parsed fields, surfaces patterns</div></div>
     <div class="duet-row"><div class="duet-you">Review the diff on the git deck</div><div class="duet-inst">Git</div><div class="duet-agent">builds in an isolated lane, lands it when green</div></div>
-    <div class="duet-row"><div class="duet-you">Fly the project's knowledge graph</div><div class="duet-inst">Memory</div><div class="duet-agent">writes the logbook as it works</div></div>
+    <div class="duet-row"><div class="duet-you">Browse the project's knowledge graph</div><div class="duet-inst">Memory</div><div class="duet-agent">writes the logbook as it works</div></div>
   </div>
 </section>
 
@@ -536,7 +537,7 @@
   <div class="feat-grid">
     <div class="feat-copy rv rv-2">
       <p>
-        Before a single agent boards, Hangar earns its keep. Declare your project's commands once in
+        Even with zero agents running, Hangar earns its keep. Declare your project's commands once in
         <strong>hangar.yml</strong> and every dev server, watcher, and one-off tool gets a home —
         started in dependency order when you open the project, restartable from the sidebar,
         two keystrokes from anywhere. No more terminal-tab archaeology.
@@ -545,7 +546,7 @@
         <li><strong>Declare once, run forever</strong> — "how do I run this repo?" becomes <em>open the project</em>; on-demand tools start their own dependency chain when triggered</li>
         <li><strong>Terminals that keep up</strong> — scrollback, search, and copy that don't flinch, even when the build output gets loud</li>
         <li><strong>Log files on the shelf</strong> — register a file once and it's tailed, filtered, and queryable right next to the process that writes it</li>
-        <li><strong>Squawks</strong> — quick per-project notes with attachments, so the "remember to fix this" sticky lands in the hangar, not on your monitor bezel</li>
+        <li><strong>Squawks</strong> — quick per-project notes with attachments, so the "remember to fix this" sticky lives with the project, not on your monitor bezel</li>
       </ul>
     </div>
     <figure class="frame rv rv-3">
@@ -560,7 +561,7 @@
   <div class="feat-grid">
     <div class="feat-copy rv rv-2">
       <p>
-        Every agent is a first-class process with a real PTY, live status, and a place in the stack.
+        Every agent is a first-class process with a real terminal, live status, and a place in the stack.
         Spawn Claude Code next to Codex next to OpenCode and watch them work — side by side with your
         dev servers and test watchers.
       </p>
@@ -584,13 +585,13 @@
       <p>
         Hangar ships a built-in <strong>MCP server</strong> that exposes the entire workspace as
         deterministic tools — <strong>80+ of them, connected the moment an agent spawns</strong>.
-        No config files, no glue scripts: an agent boards already knowing how to read the stack,
-        query your telemetry, and coordinate the crew.
+        No config files, no glue scripts: an agent starts already knowing how to read the stack,
+        query your telemetry, and coordinate with the other agents.
       </p>
       <ul class="feat-list">
         <li><strong>Read the room</strong> — list the stack, read any terminal's output, check the test watcher instead of re-running the suite</li>
-        <li><strong>Coordinate the crew</strong> — spawn sibling agents, message them mid-task, see who's idle, executing, or blocked</li>
-        <li><strong>Operate the instruments</strong> — SQL over telemetry and logs, worktree lanes, schedules, the logbook wiki</li>
+        <li><strong>Coordinate agents</strong> — spawn siblings, message them mid-task, see who's idle, executing, or blocked</li>
+        <li><strong>Operate the workspace</strong> — SQL over telemetry and logs, worktree lanes, schedules, the logbook wiki</li>
         <li><strong>Leave the place better</strong> — agents log what moved, update project memory, even author themes</li>
       </ul>
     </div>
@@ -614,7 +615,7 @@
 
   <div class="tools-grid">
     <div class="tool-card rv"><h4>Processes</h4><p>List the stack, read any PTY's screen, send input, restart — <code>hangar_get_process_logs</code> beats re-running the build.</p></div>
-    <div class="tool-card rv rv-1"><h4>Agents</h4><p>Spawn, message, and monitor the crew — every agent knows who else is on deck and what they're doing.</p></div>
+    <div class="tool-card rv rv-1"><h4>Agents</h4><p>Spawn, message, and monitor agents — every agent knows who else is running and what they're doing.</p></div>
     <div class="tool-card rv rv-2"><h4>Telemetry</h4><p>Overview, error groups, pathologies, span stats, full SQL — <code>hangar_query_telemetry</code> over your traces.</p></div>
     <div class="tool-card rv"><h4>Logs</h4><p>Query parsed log fields with real SQL, save formats and views, surface recurring patterns.</p></div>
     <div class="tool-card rv rv-1"><h4>Lanes</h4><p>Create an isolated git-worktree build, sync it, land it — agents ship without stepping on your checkout.</p></div>
@@ -625,7 +626,7 @@
   </div>
 
   <p class="meta-note rv">
-    <strong>FIELD PROOF:</strong> every screenshot on this page was captured by an agent flying Hangar
+    <strong>FIELD PROOF:</strong> every screenshot on this page was captured by an agent driving Hangar
     through its own MCP tools — navigate, click, frame, shoot.
   </p>
 </section>
@@ -644,7 +645,7 @@
         every view in the app is two keystrokes away.
       </p>
       <ul class="feat-list">
-        <li><strong>New Agent: Claude Code / Codex / OpenCode</strong> — a fresh crew member in one hit</li>
+        <li><strong>New Agent: Claude Code / Codex / OpenCode</strong> — a fresh agent in one keystroke</li>
         <li><strong>Process controls</strong> — start, restart, and jump to anything in the stack</li>
         <li><strong>Keyboard everything</strong> — themes, sidebar, quick switch, even cat mode: if it's in Hangar, it's in the palette</li>
       </ul>
@@ -658,9 +659,9 @@
   <div class="feat-grid">
     <div class="feat-copy rv rv-2">
       <p>
-        A built-in OTLP receiver turns your app's traces, logs, and metrics into a flight deck:
+        A built-in OTLP receiver turns your app's traces, logs, and metrics into a live diagnostic view:
         error groups, latency heatmaps, slow operations, and SQL pathologies — spotted automatically.
-        And because it's all exposed over MCP, your agents diagnose from the same instruments you do.
+        And because it's all exposed over MCP, your agents diagnose from the same data you do.
       </p>
       <ul class="feat-list">
         <li><strong>Pathology detection</strong> — N+1 query runs and SQL hotspots surfaced, scored, ranked</li>
@@ -708,7 +709,7 @@
       </p>
       <ul class="feat-list">
         <li><strong>Smart diffs</strong> — two-tone, inline-highlighted, aligned so your eyes don't hunt</li>
-        <li><strong>History on deck</strong> — every commit a click away, rendered with the same instruments</li>
+        <li><strong>History included</strong> — every commit a click away, rendered with the same care</li>
         <li><strong>Review, then ask</strong> — hand any diff to an agent without copy-pasting a thing</li>
       </ul>
     </div>
@@ -736,7 +737,7 @@
         <li><strong>Blueprints are contracts</strong> — a human-readable doc, machine-checkable acceptance criteria, and prototypes you can click before a line of code exists</li>
         <li><strong>Lanes are clean rooms</strong> — every build gets its own worktree and branch; run three agents on three features with zero collisions</li>
         <li><strong>One-click handoff</strong> — Build spawns the agent, seeds it the plan, and criteria tick as they hold</li>
-        <li><strong>Land when green</strong> — sync with main, review the diff on the git deck, land the lane with one command</li>
+        <li><strong>Land when green</strong> — sync with main, review the diff in the git view, land the lane with one command</li>
       </ul>
     </div>
   </div>
@@ -765,12 +766,12 @@
       <p>
         Agents forget everything between sessions — unless they keep a logbook. Hangar's agent-maintained
         wiki carries sagas, decisions, and syntheses across sessions, cross-linked into a knowledge graph
-        you can actually fly through.
+        you can actually explore.
       </p>
       <ul class="feat-list">
         <li><strong>Written by agents, for agents</strong> — every session starts with the project's memory</li>
         <li><strong>[[wiki-links]]</strong> — pages link into a live force-directed graph</li>
-        <li><strong>Append-only log</strong> — a flight record of what moved, session by session</li>
+        <li><strong>Append-only log</strong> — a running record of what moved, session by session</li>
       </ul>
     </div>
   </div>
@@ -789,14 +790,14 @@
         <tr><th>Gate</th><th>Feature</th><th>Details</th><th>Status</th></tr>
       </thead>
       <tbody>
-        <tr><td class="gate">A01</td><td class="dest">Agent skills</td><td class="via">bundled skills that teach the crew every instrument on the deck</td><td><span class="status ontime">ON TIME</span></td></tr>
+        <tr><td class="gate">A01</td><td class="dest">Agent skills</td><td class="via">bundled skills that teach agents every tool in the workspace</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">A02</td><td class="dest">File navigator</td><td class="via">docked read-only tree with ripgrep search — select lines, ask an agent</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">B04</td><td class="dest">Canvas environments</td><td class="via">agent-painted animated scenes behind your workspace</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">B07</td><td class="dest">Command schedules</td><td class="via">interval &amp; cron runs for any command in the stack</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">C02</td><td class="dest">Agent-built themes</td><td class="via">21 built-ins, plus ask an agent to design you a new one — live</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">C05</td><td class="dest">Squawks</td><td class="via">quick per-project notes with attachments, one keystroke away</td><td><span class="status ontime">ON TIME</span></td></tr>
         <tr><td class="gate">D01</td><td class="dest">Cat mode</td><td class="via">full-screen keyboard guard — the agent keeps working while the cat patrols</td><td><span class="status ontime">ON TIME</span></td></tr>
-        <tr><td class="gate">D09</td><td class="dest">iPhone remote</td><td class="via">watch and nudge your fleet from the couch</td><td><span class="status boarding">BOARDING</span></td></tr>
+        <tr><td class="gate">D09</td><td class="dest">iPhone remote</td><td class="via">watch and nudge your agents from the couch</td><td><span class="status boarding">BOARDING</span></td></tr>
       </tbody>
     </table>
   </div>
